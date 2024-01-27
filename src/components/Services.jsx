@@ -6,7 +6,7 @@ export const servicesand = [
     {
         'service':'Wedding Photography',
         'points':['Outdoor Shooting','Pre-wedding Shoot','Haldi Shoot'],
-        'logo': 'https://assets.hackclub.com/icon-rounded.svg',
+        'logo': `${home}`,
         'company':'vpn_studios'
     },
     {
@@ -30,7 +30,7 @@ export const servicesand = [
 ]
 const Services = () => {
     return (
-    <div className='experience bg-black w-screen text-white px-4 py-16' id='experience'>
+    <div className='experience bg-black w-screen text-white px-4 py-16' id='services'>
       <div className='px-2 sm:px-16'>
         <p className='font-light'>We are happy to serve</p>
         <h2 className='text-4xl sm:text-5xl font-extrabold mt-2'>Our Services.</h2>

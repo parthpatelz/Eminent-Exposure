@@ -7,8 +7,8 @@ const Navbar = () => {
             <ul class="hidden font-medium sm:flex space-x-4 sm:items-center sm:text-lg">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#experience">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contactUs">Contact</a></li>
             </ul>
             </div>
         </nav>

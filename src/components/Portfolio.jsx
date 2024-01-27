@@ -18,7 +18,7 @@ const ImageSlider = () => {
   const frameStyle ='w-full h-auto p-12 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'
 
   return (
-    <div className="bg-white-900 text-black min-h-screen">
+    <div className="bg-white-900 text-black min-h-screen" id='portfolio'>
       <div className="container mx-auto py-8 mt-4">
         <h1 className="text-4xl font-bold text-center mb-4 md:text-5xl">Our Work</h1>
         <div className="hidden md:block">

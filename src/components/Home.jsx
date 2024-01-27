@@ -17,7 +17,7 @@ const Home = () => {
     },[text])
 
     return (
-        <div className="relative flex items-center justify-center h-screen">
+        <div className="relative flex items-center justify-center h-screen" id='home'>
             <img className="object-cover w-full h-full" src={home} alt="Home Image"/>
             <div className="absolute text-white text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">Looking for a wedding&nbsp;</h1><span className='text-zinc-950 text-4xl md:text-5xl lg:text-6xl font-extrabold'>{text}</span>
