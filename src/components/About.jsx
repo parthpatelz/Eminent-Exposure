@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import nithin from '../assets/nithin2.jpeg'
-import prashanth from '../assets/prashanth2.jpeg'
+
 
 // Styled components for styling
 const FullScreenContainer = styled.div`
@@ -70,13 +69,13 @@ const AboutPage = () => {
     {
       id: 1,
       name: 'Nithin Manda',
-      image: nithin, // replace with the actual path to the image
+      image: '', // replace with the actual path to the image
       description: 'Photographer and Social Media Handler',
     },
     {
       id: 2,
       name: 'Prashanth',
-      image: prashanth, // replace with the actual path to the image
+      image: '', // replace with the actual path to the image
       description: 'Photographer and Videographer',
     },
   ];

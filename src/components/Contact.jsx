@@ -8,11 +8,12 @@ const EMAIL_TEMPLATE_ID = 'template_wbcc9bb'
 const EMAIL_SERVICE_ID = 'service_8f09mn8'
 
 const Contact = () => {
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [form, setForm] = useState({
-        firstName: '',
+        name: '',
         email: '',
-        purpose: '',
+        subject: '',
+        message: ''
     });
 
     const handleChange = (e) => {
@@ -22,131 +23,107 @@ const Contact = () => {
             ...prevForm,
             [name]: value,
         }));
-        console.log(form)
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(form)
 
-        const username = form.firstName.trim() 
-        const user_email = form.email.trim()
-        const purpose = form.purpose.trim()
+        const username = form.name?.trim()
+        const user_email = form.email?.trim()
+        const message = form.message
+
+        if (!username || !user_email || !message) {
+            return toast.error("Please fill all the fields", {
+                position: 'bottom-right',
+            })
+        }
 
         emailjs
-			.send(
-				EMAIL_SERVICE_ID,
-				EMAIL_TEMPLATE_ID,
-				{
-					from_name: username,
-					to_name: "Nithin Manda",
-					reply_to: user_email,
-					to_email: "vpnstudios1@gmail.com",
-					message: purpose,
-				},
-				EMAIL_PUBLIC_KEY
-			)
-			.then(
-				() => {
-					setLoading(false);
-					toast.success("We will be in touch with you soon! Thank You", {
-						position: 'bottom-right',
-					});
-					setForm({
-						firstName: "",
-						email: "",
-						service: "",
-					});
-				},
-				(error) => {
-					setLoading(false);
-					console.error(error);
-					toast.error("Uh, oh! Something went wrong. Please try again later.", {
-						position: 'bottom-right',
-					});
-				}
-			);        
+            .send(
+                EMAIL_SERVICE_ID,
+                EMAIL_TEMPLATE_ID,
+                {
+                    from_name: username,
+                    to_name: "Nithin Manda",
+                    reply_to: user_email,
+                    to_email: "vpnstudios1@gmail.com",
+                    message: message,
+                },
+                EMAIL_PUBLIC_KEY
+            )
+            .then(
+                () => {
+                    setLoading(false);
+                    toast.success("We will be in touch with you soon! Thank You", {
+                        position: 'bottom-right',
+                    });
+                    setForm((prevForm) => ({
+                        ...prevForm,
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: ''
+                    }));
+                },
+                (error) => {
+                    setLoading(false);
+                    console.error(error);
+                    toast.error("Uh, oh! Something went wrong. Please try again later.", {
+                        position: 'bottom-right',
+                    });
+                }
+            );
     };
 
     return (
-        <div id='contactUs'>
-            <div className='flex flex-col items-center justify-center h-screen'>
-                <h1 className="mt-6 text-4xl font-extrabold leading-none tracking-tight text-gray-800 md:text-5xl lg:text-6xl dark:text-white">
-                    Contact <mark className="px-2 text-white bg-gray-800 rounded dark:bg-gray-500">Us</mark>
-                </h1>
-                <div className="mt-6">
-                    <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
-                        <div className="grid md:grid-cols-2 md:gap-6">
-                            <div className="relative z-0 w-full mb-5 group">
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    id="floating_first_name"
-                                    className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" "
-                                    required
-                                    onChange={handleChange}
-                                />
-                                <label
-                                    htmlFor="floating_first_name"
-                                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >
-                                    Name
-                                </label>
+        <div id='contactUs' style={{ marginTop: '7rem' }} className='h-screen'>
+            <div class="h-75 w-75 mx-auto">
+                <div class="wrapper img" style={{ backgroundImage: 'url(https://preview.colorlib.com/theme/bootstrap/contact-form-08/images/img.jpg.webp)' }} >
+                    <div class="row">
+                        <div class="col-md-9 col-lg-7">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 class="mb-4">Get in touch with us</h3>
+                                <form id="contactForm" name="contactForm" class="contactForm" novalidate="novalidate" onSubmit={handleSubmit}>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="name">Full Name</label>
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Name" onChange={handleChange} />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="email">Email Address</label>
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Email" onChange={handleChange} />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Subject</label>
+                                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" onChange={handleChange} />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="#">Message</label>
+                                                <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange}></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Send Message" class="btn btn-primary" />
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                type="email"
-                                name="email"
-                                id="floating_email"
-                                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" "
-                                required
-                                onChange={handleChange}
-                            />
-                            <label
-                                htmlFor="floating_email"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Email address
-                            </label>
-                        </div>
-                        {/* Add a country selection dropdown */}
-                        <div className="relative z-0 w-full mb-5 group">
-                            <select
-                                name="purpose"
-                                id="purpose_of_email"
-                                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                required
-                                onChange={handleChange}
-                                // value={form.purpose}
-                            >
-                                <option value="" disabled>Which service do you need?</option>
-                                <option value="wedding">Wedding Photography</option>
-                                <option value="birthday">Birthday Events</option>
-                                <option value="otherphotography">Other Photography Events</option>
-                                <option value="led">LED Rentals</option>
-                                <option value="GiftItem">Order Gift Items</option>
-                                <option value="photoAlbum">Order Photo Albums</option>
-                            </select>
-                            <label
-                                htmlFor="purpose_of_email"
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >
-                                Purpose
-                            </label>
-                        </div>
-                        <button
-                            type="submit"
-                            className="text-white bg-gray-800 hover:bg-white-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                            Submit
-                        </button>
-                    </form>
+                    </div>
                 </div>
-                <ToastContainer />
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,51 +1,75 @@
-import React  from 'react';
+import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { socialicon01, socialicon02, socialicon03, socialicon04 } from '../imagePath';
 
 const Footer = () => {
-    return (
-        <div className="bg-gray-800 p-8 text-white text-center overflow-x-hidden">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold tracking-wider mb-6 bg-clip-text ">
-            Follow us on
-          </h1>
-          <div className="mb-8">
-            <div className="flex flex-col items-center mb-4">
-              <a href="https://www.facebook.com/profile.php?id=61554977925542" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl lg:text-2xl mx-2 hover:text-blue-500">              <span className="text-2xl md:text-lg lg:text-xl cursor-pointer underline">Facebook</span>
-
-              </a>
+  return (
+    <div className="bg-white px-4 text-white text-center mt-10">
+      <div className="row">
+        <div className="col-xl-3 col-sm-6 col-12">
+          <a href="https://www.youtube.com/channel/UCk5d3SkOYK__Dp7hY_kvS7A" target="_blank" rel="noopener noreferrer">
+            <div className="card flex-fill linkedin sm-box">
+              <div className='social-likes'>
+                <p>Subscribe us on Youtube</p>
+                <h6>69</h6>
+              </div>
+              <div className="social-boxs">
+                <img src={socialicon04} alt="Social Icon" />
+              </div>
             </div>
-    
-            <div className="flex flex-col items-center mb-4">
-              <a href="your_twitter_link" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl lg:text-2xl mx-2 hover:text-red-600">
-              <span className="text-2xl md:text-lg lg:text-xl cursor-pointer underline">Youtube</span>
-              </a>
-            </div>
-    
-            <div className="flex flex-col items-center mb-4">
-              <a href="https://www.instagram.com/vpn_studios_/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl lg:text-2xl mx-2 hover:text-pink-500">
-              <span className="text-2xl md:text-lg lg:text-xl cursor-pointer underline">Instagram</span>
-
-              </a>
-            </div>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold tracking-wider mb-6 bg-clip-text ">
-            Contact Us
-          </h1>
-          <div className="mb-8">
-            <div className="flex flex-col items-center mb-4">
-              <Link to='/contact' className='underline text-2xl cursor-pointer hover:text-red-800'>Contact</Link>
-            </div>
-            <h1>
-              vpnstudios1@gmail.com
-            </h1>
-            <h2>+91 9542402123</h2>
-            <h2>+91 9912491246</h2>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold tracking-wider mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">
-            VPN STUDIOS
-          </h1>
+          </a>
         </div>
-      );
+
+        <div className="col-xl-3 col-sm-6 col-12">
+          <a href='https://www.facebook.com/profile.php?id=61554977925542' target="_blank" rel="noopener noreferrer">
+            <div className="card flex-fill fb sm-box">
+              <div className="social-likes">
+                <p>Like us on facebook</p>
+                <h6>50</h6>
+              </div>
+              <div className="social-boxs">
+                <img src={socialicon01} alt="Social Icon" />
+              </div>
+            </div>
+          </a>
+        </div>
+        <div className="col-xl-3 col-sm-6 col-12">
+          <a href='https://www.instagram.com/vpn_studios_/' target="_blank" rel="noopener noreferrer">
+
+            <div className="card flex-fill twitter sm-box">
+              <div className="social-likes">
+                <p>Follow us on twitter</p>
+                <h6>48</h6>
+              </div>
+              <div className="social-boxs">
+                <img src={socialicon02} alt="Social Icon" />
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="col-xl-3 col-sm-6 col-12">
+          <a href='https://www.instagram.com/vpn_studios_/' target="_blank" rel="noopener noreferrer">
+
+            <div className="card flex-fill insta sm-box">
+              <div className="social-likes">
+                <p>Follow us on instagram</p>
+                <h6>131</h6>
+              </div>
+              <div className="social-boxs">
+                <img src={socialicon03} alt="Social Icon" />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <footer>
+        <p>Copyright © 2024 VPN Studios.</p>
+      </footer>
+
+    </div>
+  );
 }
 
 export default Footer
