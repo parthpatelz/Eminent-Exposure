@@ -1,69 +1,162 @@
-import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { home } from '../imagePath';
-let name = 'Photographer...'
+import { FaArrowDown, FaExpandArrowsAlt } from 'react-icons/fa';
+
 const Home = () => {
   const [text, setText] = useState('');
-  const ref = useRef(0)
+  const [lightbox, setLightbox] = useState(null);
+  const ref = useRef(0);
+  const name = 'Photographer...';
 
+  // Typewriter effect
   useEffect(() => {
     const interval = setInterval(() => {
       if (ref.current < name.length) {
+        setText(prev => prev + name[ref.current]);
         ref.current++;
-        setText(() => text + name[ref.current - 1])
       }
-    }, 200);
+    }, 150);
     return () => clearInterval(interval);
-  }, [text])
+  }, []);
 
+  // Image grid data
   const imageUrls = [
+    // ... keep your existing image URLs
 
-    'https://images.pexels.com/photos/6914621/pexels-photo-6914621.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/1707446/pexels-photo-1707446.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/1024965/pexels-photo-1024965.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/7669960/pexels-photo-7669960.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/7669984/pexels-photo-7669984.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://plus.unsplash.com/premium_photo-1661862397518-8e50332b6e97?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kaWFuJTIwd2VkZGluZ3xlbnwwfHwwfHx8MA%3D%3D',
-    'https://images.unsplash.com/photo-1635919254233-38ea27301900?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGluZGlhbiUyMHdlZGRpbmd8ZW58MHx8MHx8fDA%3D',
-    'https://images.pexels.com/photos/4552397/pexels-photo-4552397.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/15107211/pexels-photo-15107211/free-photo-of-couple-in-green-grass-field.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/16364574/pexels-photo-16364574/free-photo-of-bride-smiling-during-a-traditional-indian-wedding-custom.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/16364593/pexels-photo-16364593/free-photo-of-bride-smiling-during-a-traditional-indian-wedding-custom.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/16364616/pexels-photo-16364616/free-photo-of-bride-smiling-during-a-traditional-indian-wedding-custom.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/16364237/pexels-photo-16364237/free-photo-of-wedding-guests-in-traditional-clothing-dancing-at-the-reception.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/16364533/pexels-photo-16364533/free-photo-of-family-in-traditional-clothing-posing-for-a-picture-at-a-wedding.jpeg?auto=compress&cs=tinysrgb&w=800'
+    'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/2395249/pexels-photo-2395249.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/2253842/pexels-photo-2253842.jpeg',
+    'https://images.pexels.com/photos/1023233/pexels-photo-1023233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/265801/pexels-photo-265801.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/28925735/pexels-photo-28925735/free-photo-of-dramatic-close-up-of-a-red-rose-with-raindrops.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/614874/pexels-photo-614874.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/7181782/pexels-photo-7181782.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/2269686/pexels-photo-2269686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/4536150/pexels-photo-4536150.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/24355433/pexels-photo-24355433/free-photo-of-father-and-mother-holding-hands-with-daughter-in-wedding-dress.jpeg?auto=compress&cs=tinysrgb&w=800'
 
 
 
   ];
 
+  // Lightbox handler
+  const openLightbox = (index) => {
+    setLightbox(index);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightbox(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <>
-      <div className="relative flex items-center justify-center h-screen" id='home'>
-        <img className="object-cover w-full h-full" src={home} alt="Home Image" />
-        <div className="absolute text-white text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">Looking for a wedding&nbsp;</h1><span className='text-5xl text-4xl md:text-5xl lg:text-6xl font-extrabold'>{text}</span>
+      {/* Hero Section */}
+      <div className="relative flex items-center justify-center h-screen bg-gray-900" id='home'>
+        <img 
+          className="object-cover w-full h-full opacity-70" 
+          src={home} 
+          alt="Wedding couple" 
+        />
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+        
+        <div className="absolute text-center space-y-6 px-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            Looking for a wedding<br/>
+            <span className="text-gradient bg-gradient-to-r from-pink-400 to-red-600 bg-clip-text text-transparent">
+              {text}
+              <span className="ml-2 animate-pulse">|</span>
+            </span>
+          </h1>
+          
+          <a 
+            href="#gallery" 
+            className="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-full transition-all duration-300 transform hover:scale-105"
+          >
+            <FaArrowDown className="animate-bounce" />
+            View Gallery
+          </a>
         </div>
       </div>
-      <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-gray-800 font-extrabold tracking-wider m-6 ml-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-pink-500">
-        PORTFOLIO
-      </h1>
 
-      <div className="flex flex-wrap m-4">
-        <br />
+      {/* Marquee Section */}
+      <div className="bg-gray-900 py-6 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-red-600 mx-4">
+            WEDDING SEASON IS HERE • 
+          </span>
+          <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mx-4">
+            CAPTURE YOUR MOMENTS • 
+          </span>
+        </div>
+      </div>
+
+      {/* Gallery Grid */}
+      <div 
+        id="gallery" 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-gray-100"
+      >
         {imageUrls.map((imageUrl, index) => (
-          <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-1">
+          <div 
+            key={index} 
+            className="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+            onClick={() => openLightbox(index)}
+          >
             <img
               src={imageUrl}
-              alt={`Image ${index + 1}`}
-              className="w-full h-auto object-cover "
+              alt={`Wedding moment ${index + 1}`}
+              className="w-full h-64 object-cover transform group-hover:scale-105 transition-all duration-300"
+              loading="lazy"
             />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="text-white">
+                <h3 className="font-bold text-lg">Wedding Moment #{index + 1}</h3>
+                <p className="text-sm opacity-90">Click to expand</p>
+              </div>
+              <FaExpandArrowsAlt className="absolute top-4 right-4 text-white text-xl" />
+            </div>
           </div>
         ))}
       </div>
-    </>
-  )
 
+      {/* Lightbox Modal */}
+      {lightbox !== null && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <div className="relative max-w-4xl w-full">
+            <img
+              src={imageUrls[lightbox]}
+              alt="Enlarged view"
+              className="max-h-[90vh] w-auto mx-auto rounded-lg"
+            />
+            <div className="absolute top-4 right-4 text-white text-sm bg-black/50 px-3 py-1 rounded-full">
+              {lightbox + 1} / {imageUrls.length}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Custom Styles */}
+      <style jsx global>{`
+        @keyframes marquee {
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+      `}</style>
+    </>
+  );
 }
 
-export default Home
+export default Home;

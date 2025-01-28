@@ -21,7 +21,7 @@ const ImageSlider = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col items-center">
               <img
-                src='https://images.pexels.com/photos/6085682/pexels-photo-6085682.jpeg?auto=compress&cs=tinysrgb&w=800'
+                src='https://plus.unsplash.com/premium_photo-1664530452596-e1c17e342876?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2VkZGluZ3xlbnwwfHwwfHx8MA%3D%3D'
                 alt="Image 1"
                 className={frameStyle}
               />
@@ -29,7 +29,7 @@ const ImageSlider = () => {
             </div>
             <div className="flex flex-col items-center">
               <img
-                src='https://images.pexels.com/photos/12934446/pexels-photo-12934446.jpeg?auto=compress&cs=tinysrgb&w=800'
+                src='https://images.unsplash.com/photo-1551892644-51a6e2e8fc65?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGJpcnRoZGF5fGVufDB8fDB8fHww'
                 alt="Image 2"
                 className={frameStyle}
               />
@@ -37,7 +37,7 @@ const ImageSlider = () => {
             </div>
             <div className="flex flex-col items-center">
               <img
-                src='https://images.pexels.com/photos/13518885/pexels-photo-13518885.jpeg?auto=compress&cs=tinysrgb&w=800'
+                src='https://images.unsplash.com/photo-1608433008134-2c01ebb7a13c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGdvdGhhbXxlbnwwfHwwfHx8MA%3D%3D'
                 alt="Image 3"
                 className={frameStyle}
               />

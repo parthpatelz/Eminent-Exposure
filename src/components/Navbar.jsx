@@ -23,7 +23,12 @@ const Navbar = () => {
     <nav className="bg-gray-800 p-4 text-white fixed w-full z-10 top-0" style={{ cursor: 'default' }}>
       <div className="mx-auto text-center flex w-5/6 justify-between">
         <div className="text-3xl sm:text-2xl font-extrabold">
-          <a href="/" className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500'>VPN Studios</a>
+        <a href="/" 
+   class="relative inline-block text-white text-4xl font-bold tracking-wider bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 p-2 rounded-lg transition-all duration-500 hover:scale-110 hover:shadow-lg hover:shadow-gray-500">
+  <span class="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 rounded-lg opacity-50 blur-md hover:blur-lg hover:opacity-70"></span>
+  <span class="relative z-10">Eminent Exposure</span>
+</a>
+
         </div>
         <div className="hidden sm:flex space-x-4 items-center text-lg">
           <Link to='/' className='text-white'>Home</Link>
@@ -45,7 +50,7 @@ const Navbar = () => {
             <li><Link to='/' onClick={closeMobileMenu} >Home</Link></li>
             <li><Link to='/portfolio' onClick={closeMobileMenu}>Portfolio</Link></li>
             <li><Link to='/services' onClick={closeMobileMenu} >Services</Link></li>
-            {/* <li><Link to='/about' onClick={closeMobileMenu}>About</Link></li> */}
+            {/* <li><Link to='/DroneCanvas' onClick={closeMobileMenu}>About</Link></li> */}
             <li><Link to='/contact' onClick={closeMobileMenu}>Contact</Link></li>
           </ul>
         </div>
